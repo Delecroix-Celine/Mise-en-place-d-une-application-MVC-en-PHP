@@ -1,0 +1,25 @@
+EMPLOYE (
+  id INT PK,
+  prenom VARCHAR,
+  nom VARCHAR,
+  email VARCHAR UNIQUE,
+  telephone VARCHAR,
+  password VARCHAR,
+  role ENUM('USER','ADMIN')
+)
+
+AGENCE (
+  id INT PK,
+  nom VARCHAR UNIQUE
+)
+
+TRAJET (
+  id INT PK,
+  depart_agence_id INT FK → AGENCE(id),
+  arrivee_agence_id INT FK → AGENCE(id),
+  depart_datetime DATETIME,
+  arrivee_datetime DATETIME,
+  total_places INT,
+  places_disponibles INT,
+  auteur_id INT FK → EMPLOYE(id)
+)
